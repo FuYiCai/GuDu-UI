@@ -1,4 +1,5 @@
 <template>
+<div>Dialog示例</div>
 <div>
     <Button @click="toggle">Button</Button>
     <Dialog v-model:visible="x" :ok="f1" :cancel="f2">
