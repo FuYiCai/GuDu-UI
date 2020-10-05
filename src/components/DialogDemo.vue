@@ -17,6 +17,9 @@
 import Dialog from '../lib/Dialog.vue'
 import Button from '../lib/Button.vue'
 import {
+    onpenDialog
+} from '../lib/openDialog'
+import {
     ref
 } from 'vue'
 export default {
@@ -32,12 +35,22 @@ export default {
         const f1 = () => {
             return false
         }
-        const f2 = () => {}
+        onpenDialog({
+            title: 'ttt',
+            content: 'leirong',
+            ok() {
+                console.log('dialog ok')
+            },
+            cancel() {
+                console.log('dialog cancel')
+            },
+            closeOnClickOverlay: false
+        });
+
         return {
             toggle,
             x,
-            f1,
-            f2
+            f1
         }
     }
 }

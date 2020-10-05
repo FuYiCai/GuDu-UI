@@ -2,7 +2,7 @@
 <div>
     <Topnav />
     <div class="layout">
-        <Topnav class="nav" />
+        <Topnav toggleMenuButtonVisible class="nav" />
 
         <div class="content">
             <aside>边栏</aside>
