@@ -1,25 +1,24 @@
 <template>
-<div>
-    <div class="gulu-tabs">
-        <div class="gulu-tabs-nav" ref="container">
-            <div class="gulu-tabs-nav-item" :class="{'selected': t === selected }" @click="select(t)" v-for="(t,index) in titles" :key="index" :ref="el => { if (t===selected) selectedItem = el }">{{t}}</div>
-            <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
-        </div>
-        <div class="gulu-tabs-content">
-            <component :is="current" :key="current.props.title" />
-        </div>
+<div class="gulu-tabs">
+    <div class="gulu-tabs-nav" ref="container">
+        <div class="gulu-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (t===selected) selectedItem = el }" @click="select(t)" :class="{selected: t=== selected}" :key="index">{{t}}</div>
+        <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
+    </div>
+    <div class="gulu-tabs-content">
+        <!-- <component :is="current" :key="current.props.title" /> -->
+        <component class="gulu-tabs-content-item" :class="{selected: c.props.title === selected }" v-for="c in defaults" :is="c" :key="c" />
     </div>
 </div>
 </template>
 
 <script lang="ts">
+import Tab from './Tab.vue'
 import {
     computed,
-    onMounted,
     ref,
-    watchEffect
-} from 'vue';
-import Tab from './Tab.vue'
+    watchEffect,
+    onMounted
+} from 'vue'
 export default {
     props: {
         selected: {
@@ -27,7 +26,6 @@ export default {
         }
     },
     setup(props, context) {
-        const defaults = context.slots.default();
         const selectedItem = ref < HTMLDivElement > (null)
         const indicator = ref < HTMLDivElement > (null)
         const container = ref < HTMLDivElement > (null)
@@ -36,7 +34,7 @@ export default {
                 const {
                     width
                 } = selectedItem.value.getBoundingClientRect()
-                indicator.value.style.width = width + 'px';
+                indicator.value.style.width = width + 'px'
                 const {
                     left: left1
                 } = container.value.getBoundingClientRect()
@@ -44,22 +42,21 @@ export default {
                     left: left2
                 } = selectedItem.value.getBoundingClientRect()
                 const left = left2 - left1
-                indicator.value.style.left = left + 'px';
+                indicator.value.style.left = left + 'px'
             })
         })
-
-        defaults.forEach(tag => {
+        const defaults = context.slots.default()
+        defaults.forEach((tag) => {
             if (tag.type !== Tab) {
-                throw new Error("Tabs 的子标签必须是 Tabs")
+                throw new Error('Tabs 子标签必须是 Tab')
             }
         })
         const current = computed(() => {
             return defaults.find(tag => tag.props.title === props.selected)
         })
-        const titles = defaults.map(tag => {
+        const titles = defaults.map((tag) => {
             return tag.props.title
         })
-
         const select = (title: string) => {
             context.emit('update:selected', title)
         }
@@ -71,7 +68,6 @@ export default {
             selectedItem,
             indicator,
             container
-
         }
     }
 }
@@ -116,14 +112,6 @@ $border-color: #d9d9d9;
 
     &-content {
         padding: 8px 0;
-
-        // &-item {
-        //     display: none;
-
-        //     &.selected {
-        //         display: block;
-        //     }
-        // }
     }
 }
 </style>

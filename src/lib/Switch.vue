@@ -12,10 +12,12 @@ import {
 } from 'vue'
 export default {
     props: {
-        value: Boolean
+        value: Boolean,
+        disabled: Boolean
     },
     setup(props, context) {
         const toggle = () => {
+            if (props.disabled) return;
             context.emit('update:value', !props.value)
         }
         return {
@@ -31,7 +33,7 @@ $h2: $h - 4px;
 
 .gulu-switch {
     height: $h;
-    width: $h*2;
+    width: $h * 2;
     border: none;
     background: #bfbfbf;
     border-radius: $h/2;
@@ -46,11 +48,6 @@ $h2: $h - 4px;
         background: white;
         border-radius: $h2 / 2;
         transition: all 250ms;
-        // 过度属性 all 
-    }
-
-    &.checked>span {
-        left: calc(100% - #{$h2} - 2px);
     }
 
     &.gulu-checked {
