@@ -5,8 +5,7 @@
         <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
-        <!-- <component :is="current" :key="current.props.title" /> -->
-        <component class="gulu-tabs-content-item" :class="{selected: c.props.title === selected }" v-for="c in defaults" :is="c" :key="c" />
+        <component :is="current" :key="current.props.title" />
     </div>
 </div>
 </template>
@@ -43,11 +42,14 @@ export default {
                 } = selectedItem.value.getBoundingClientRect()
                 const left = left2 - left1
                 indicator.value.style.left = left + 'px'
+            }, {
+                flush: 'post'
             })
         })
         const defaults = context.slots.default()
         defaults.forEach((tag) => {
-            if (tag.type !== Tab) {
+            // @ts-ignore
+            if (tag.type.name !== Tab.name) {
                 throw new Error('Tabs 子标签必须是 Tab')
             }
         })
