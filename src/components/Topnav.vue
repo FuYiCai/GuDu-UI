@@ -52,7 +52,7 @@ $color: #007974;
     left: 0;
     width: 100%;
     color: $color;
-    z-index: 10;
+    z-index: 20;
     justify-content: center;
     align-items: center;
 

@@ -1,28 +1,20 @@
 <template>
 <div>
-    Switch 的文档
-    <tabs v-model:selected="x">
-        <tab title="one">123132</tab>
-        <tab title="two55555555555555">5555555555555555555</tab>
-    </tabs>
+    <h1>Tabs 示例</h1>
+    <Demo :component="Tabs1Demo" />
 </div>
 </template>
 
 <script lang="ts">
-import {
-    ref
-} from 'vue'
-import Tab from '../lib/Tab.vue'
-import Tabs from '../lib/Tabs.vue'
+import Demo from './Demo.vue'
+import Tabs1Demo from './Tabs1.demo.vue'
 export default {
     components: {
-        Tab,
-        Tabs
+        Demo
     },
-    setup(props) {
-        const x = ref('one')
+    setup() {
         return {
-            x
+            Tabs1Demo
         }
     }
 }
