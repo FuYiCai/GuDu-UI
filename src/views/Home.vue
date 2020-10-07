@@ -4,9 +4,9 @@
         <Topnav />
         <div class="banner">
             <h1>咕嘟 UI</h1>
-            <h2>一 个 快 速 体 验 VUE3 的 框 架</h2>
+            <h2 class="zwyHeightSec">一 个 快 速 体 验 VUE3 的 框 架</h2>
             <p class="actions">
-                <a href="https//github.com">GitHub</a>
+                <a href="https://github.com/FuYiCai/GuDu-UI">GitHub</a>
                 <router-link to="/doc">开始</router-link>
             </p>
         </div>
@@ -59,6 +59,9 @@ $color: #007974;
 }
 
 .features {
+    display: flex;
+    justify-content: center;
+
     >svg {
         margin: 64px auto;
         padding: 0 16px;
@@ -131,5 +134,33 @@ $color: #007974;
             }
         }
     }
+}
+
+.zwyHeightSec {
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes zwyHeightSec {
+    100% {
+        background-position: right -40px top 0px;
+    }
+}
+
+.zwyHeightSec::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    background-size: 40px 100%;
+    background-repeat: no-repeat;
+    background-position: left -40px top 0;
+    animation: zwyHeightSec 1s ease infinite;
 }
 </style>

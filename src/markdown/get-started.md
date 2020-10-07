@@ -20,7 +20,7 @@ import {Button, Tabs, Switch, Dialog} from "king-ui"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "king-ui"
+import {Button, Tabs, Switch, Dialog} from "gu-du-1"
 export default {
   components: {Button}
 }
