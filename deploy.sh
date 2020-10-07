@@ -3,9 +3,9 @@ yarn build &&
 cd dist &&
 git init &&
 git add . &&
-git commit -m "update" &&
+git commit -m "update_gudu" &&
 git branch -M master &&
-git remote add origin git@github.com:FuYiCai/gudu-website.git &&
+git remote add origin git@gitee.com:fycyyy/gudu-ui.git &&
 git push -f -u origin master &&
 cd -
-echo https://fuyicai.github.io/gudu-website/#/
+echo https://fycyyy.gitee.io/gudu-ui
