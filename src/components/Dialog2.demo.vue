@@ -24,7 +24,7 @@ export default {
         const showDialog = () => {
             onpenDialog({
                 title: h('strong', {}, '标题'),
-                content: '你好',
+                content: '内容',
                 ok() {
                     console.log('ok')
                 },

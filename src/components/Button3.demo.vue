@@ -8,16 +8,19 @@
         <Button>普通按钮</Button>
         <Button level="danger">危险按钮</Button>
     </div>
-    <div style="padding-top:5px">
-        <Button theme="link" level="main">主要链接按钮</Button>
-        <Button theme="link">普通链接按钮</Button>
+    <div class="p-t5">
         <Button theme="link" level="danger">危险链接按钮</Button>
+        <Button theme="link" level="main">主要链接按钮</Button>
     </div>
-    <div style="padding-top:5px">
+    <div class="p-t5">
+        <Button theme="link">普通链接按钮</Button>
         <Button theme="text" level="main">主要文字按钮</Button>
+    </div>
+    <div class="p-t5">
         <Button theme="text">普通文字按钮</Button>
         <Button theme="text" level="danger">危险文字按钮</Button>
     </div>
+
 </div>
 </template>
 

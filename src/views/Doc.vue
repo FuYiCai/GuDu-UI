@@ -5,7 +5,6 @@
         <Topnav toggleMenuButtonVisible class="nav" />
 
         <div class="content">
-            <aside>边栏</aside>
             <aside v-if="menuVisibel">
                 <h2>文档</h2>
                 <ol>
